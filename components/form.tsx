@@ -16,9 +16,28 @@ const Form = () =>{
   const [username, handleUsername] = React.useState('Username');
   const [password, handlePassword] =React.useState('password')
 
-  //Logic to handle the backend
+
+
+  //Testing the android routing with express
+  const testRoute = async()=>{
+    const url = 'http://192.168.2.219:3000/test1';
+
+    try{
+      fetch(url,{
+        method:'GET',
+      }).then(response =>{
+        return response.text();
+      }).then(data =>{
+        Alert.alert(data);
+      })
+
+    }catch(error){
+      console.log(error);
+    }
+  }
+  
   const handleSubmit = async () => {
-    const url = 'http://10.0.2.2:3000/';
+    const url = 'http://10.0.3.2:3000/test';
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -27,7 +46,7 @@ const Form = () =>{
             },
             body: JSON.stringify({
                 "username": username,
-                "password": password
+                "password": password,
             })
         });
 
