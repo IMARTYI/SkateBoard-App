@@ -13,9 +13,8 @@ import axios from 'axios';
 
 const Form = () =>{
 
-  const [username, handleUsername] = React.useState('Username');
-  const [password, handlePassword] =React.useState('password')
-
+  const [username, setUsername] = useState('');
+  const [password,setPassword] = useState('');
 
 
   //Testing the android routing with express
@@ -35,9 +34,14 @@ const Form = () =>{
       console.log(error);
     }
   }
-  
+
+
+  const test=() =>{
+    console.log("Username:", {username})
+    console.log("Password:", {password})
+  }
   const handleSubmit = async () => {
-    const url = 'http://10.0.3.2:3000/test';
+    const url = 'http://192.168.2.219:3000/test';
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -71,17 +75,17 @@ const Form = () =>{
      <Text className='text-4xl text-center mb-5'> LOGIN</Text>
       <TextInput
         className='h-10 border border-black mb-3 pl-3 rounded'
-        onChangeText={handleUsername}
+        onChangeText={setUsername}
         placeholder="example@gmail.com"
       />
       <TextInput
         className='h-10 border border-black mb-3 pl-3 rounded'
         placeholder='Password'
-        onChangeText={handlePassword}
+        onChangeText={setPassword}
       />
       <TouchableOpacity 
         className='bg-black py-3 rounded  text-white p-32'
-        onPress={handleSubmit}
+        onPress={testRoute}
       >
         <Text className='text-center text-white text-sm'>Submit</Text>
       </TouchableOpacity>

@@ -1,22 +1,21 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
 const port = 3000;
 const  app = express();
 app.use(cors());
 app.use(bodyParser.json());
+const router = require('./routes/routes');
 
 
-app.get('/test1',(req,res)=>{
 
-    res.send("I am the server talking to you ")
-})
+
+app.use('/',router)
+
+
 
 app.use('/',(req,res)=>{
-    console.log("recived request")
     res.send("hello World");
-
 })
 //Test post Function
 app.post('/test',(req,res)=>{
