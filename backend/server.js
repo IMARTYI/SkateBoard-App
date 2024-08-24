@@ -14,19 +14,7 @@ app.use('/',router)
 
 
 
-app.use('/',(req,res)=>{
-    res.send("hello World");
-})
-//Test post Function
-app.post('/test',(req,res)=>{
-    const {username,password} = req.body;
-    console.log("recieved data", {username,password})
 
-    res.json({
-        message: 'Form data received successfully!',
-        receivedData: { username, password },
-      });
-})
 
 
 app.listen(port, ()=>{
